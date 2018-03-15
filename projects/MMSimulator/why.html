@@ -52,6 +52,32 @@
 				</ol>
 			</p>
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/O6Smkv11Mj4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			<h2>More Discussion</h2>
+			<p>
+					Let's say you had a team that was going to play 5 games straight, each with different opponents. If it lost any of the games, it would not proceed to the final game, but if it got all the way to the 5th game and won, it would be the champion. (Let's ignore, for now, who would be champion if our team was knocked out.) Let's say the probabilities of our team winning each game (independent of the results of the other games), if it gets to play that game, were as follows (so that competition gets much tougher in the last 3 games):
+			</p>
+			<p><em>#1: 98%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#2: 75%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#3: 50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#4: 50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#5: 50%</em></p>
+			<p>
+					The probability of our team winning the championship is easy. Just multiply all of those probabilities together, and you get 9.2%. In fact, we can know the probability that our team will make it to AND win each game by multiplying the cumulative probabilities, which looks like this:
+			<p>
+			<p><em>#1: 98%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#2: 73.5%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#3: 36.75%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#4:  18.375%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#5:  9.1875%</em></p>
+			<p>
+					Now, if we run a simulation, there is a 2% chance that our team would lose in the very first iteration. This is actually true in the real world, too. However, if that were to occur there's no way you'd say the best team won. Perhaps it would be most accurate to say the best team TODAY won.  Because if that game were played 99 more times, our team most likely would win 98 of those matches.  The same is true for the rest of the series. Thus, over many many many iterations of a simulation, the outcomes inevitably gravitate towards the probabilities.
+			</p>
+			<P>
+					So if we know what the probabilities are and enough iterations eventually gravitate to the probabilities, why run the simulation? Why not just calculate the probabilities and be done with it?  
+			</p>
+			<p>
+					OK, well imagine that the opponent our team plays in the 2nd game is decided by the opponent's OWN first round game. Let's call the favorite in that game &#34;Opp1&#34; and the underdog &#34;Opp2&#34;. Opp1 has an 80% chance of beating Opp2. If Opp1 beats Opp2 then our team has only a 50% chance of beating Opp1, but if Opp2 surprisingly wins in the first round, our team has an 80% chance of beating Opp2. The probabilities then look like this:
+			</p>
+			<p><em>
+					80% chance:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1: 98%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#2: <strong>50%</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#3: 50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#4: 50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#5: 50%, which multiplied together equals 6.125%<br />
+					20% chance:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1: 98%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#2: <strong>80%</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#3: 50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#4: 50%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#5: 50%, which multiplied together equals 9.8%<br />
+					So if we take (0.8 * 6.125) + (0.2 * 9.8) we get a probability of reaching the final game of 6.86%
+			</em></p>
+			<p>
+					We can see that the outcome for our team DEPENDS on the outcome of the other game in the first round. Now imagine that there aren't only 4 teams playing to the 5th game, but rather <span style="font-size: 20px"><strong>64</strong></span> teams playing to a <strong>6th</strong> round game.  Now you see how complicated the mathematics would be.  Thus, it simply is easier to run a simulation that gravitates TOWARDS the probabilities rather than calculating them.
+			</p>
 			<p>Back to <a href="MMHome.html">March Madness Simulation Results</a></p>
 		</div>
 	</body>

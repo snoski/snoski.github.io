@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115795339-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115795339-1');
+		</script>
+		<title>Jeffrey Blake Carter</title>
+		<link type="text/css" rel="stylesheet" href="../../substyle.css" />
+	</head>
+	<body>
+		<header>
+			<div class="header-left">
+				<img src="../../WSO Pic.jpg" />
+			</div>
+			<div class="header-middle">
+				<p><strong><em>Jeffrey B. Carter</em></strong></p>
+			</div>
+			<div class="header-right">
+				<ul>
+					<li><a href="../../index.html">Home</a></li>
+					<li><a href="../../resume.html">R&eacutesum&eacute;</a></li>
+					<li><a href="../../projects.html">Projects</a></li>
+					<li><a href="../../blog.html">Blog</a></li>
+					<li><a href="../../picture.html">Pictures</a></li>
+					<li><a href="../../about.html">About</a></li>
+				</ul>
+			</div>
+		</header>
+		<div class="content">
+			<h3>March 14, 2018</h3>
+			<h1>March Madness 2018 Simulator</h1>
+			<p>
+					Every year in March, millions of basketball fans get amped for the thrill that is March Madness. Many will fill out brackets online hoping
+					 to hit pay dirt if they can achieve the ever elusive <em>perfect bracket</em>.
+			 </p>
+			<p>
+					Some websites allow many entries, but each entry takes quite a bit of time to fill out if one is trying to think thoughtfully about the real probabilities of all of the teams winning their respective games. For instance, ESPN's <a href="https://games.espn.com/tournament-challenge-bracket/2018/en/">Tournament Challenge</a> allows each user 25 brackets. At 63 games each, this means a user would have to determine the winner for 1,575 games!
+			</p>
+			<p>
+					This year, I decided to write a program that would automatically fill out my 25 brackets based on given win probabilities. I thought, while I'm at it, why not run it over 100,000 iterations and analyze the results? Below you can see what I discovered.
+			</p>
+			<p>
+					For those of you asking why in the world I would want to do this or wondering if 100,000 iterations is overkill: <a href="why.html">Why?</a>
+			</p>
+			<p>
+					For those of you that want to dig far deeper into exactly how I did all of this, you can read more about my methodology here: <a href="methodology.html">Methodology</a>
+			</p>
+			<p>
+					But for those of you who are already saying, &#34;Get on with it, and show me the results!&#34;, I will make you wait no longer:
+			</p>
+			<br/>
+			<h2>Results By Team</h2>
+			<!--<h3>Games | <a href="TeamPctAppear.html">% of Appearances</a> | <a href="TeamEntriesRemaining.html">Entries Remaining</a></h3>-->
+			<h3><a href="javascript:;" onclick="getElementById('TeamPic').src='TeamGames.png'">Games</a> | <a href="javascript:;" onclick="getElementById('TeamPic').src='TeamPctAppear.png'">% of Appearances</a> | <a href="javascript:;" onclick="getElementById('TeamPic').src='TeamEntriesRemaining.png'">Entries Remaining</a></h3>
+			<img id="TeamPic" src="TeamGames.png"/>
+			<br/>
+			<h2>Results By Conference</h2>
+			<h3><a href="javascript:;" onclick="getElementById('ConfPic').src='ConfGames.png'">Games</a> | <a href="javascript:;" onclick="getElementById('ConfPic').src='ConfPctAppear.png'">% of Appearances</a> | <a href="javascript:;" onclick="getElementById('ConfPic').src='ConfPctInitial.png'">Tourney Teams Still Remaining</a> | <a href="javascript:;" onclick="getElementById('ConfPic').src='ConfEntriesRemaining.png'">Total CONFERENCE Teams Remaining</a></h3>
+			<img id="ConfPic" src="ConfGames.png"/>
+			<br/>
+			<h2>Results By Seed</h2>
+			<h3><a href="javascript:;" onclick="getElementById('SeedPic').src='SeedGames.png'">Games</a> | <a href="javascript:;" onclick="getElementById('SeedPic').src='SeedPctAppear.png'">% of Appearances</a> | <a href="javascript:;" onclick="getElementById('SeedPic').src='SeedEntriesRemaining.png'">Entries Remaining</a></h3>
+			<img id="SeedPic" src="SeedGames.png"/>
+		</div>
+	</body>
+</html>

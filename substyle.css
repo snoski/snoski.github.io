@@ -1,15 +1,16 @@
 header {
-	position: fixed;
+	position:fixed;
 	z-index: 1;
 	height: 30px;
 	background-color: #4d5ccc;
 	width: 99%;
+	top: -1%;
 }
 .header-left {
 	position: absolute;
 	height: 30px;
 }
-header img{
+header img {
 	height: 30px;
 }
 .header-middle {
@@ -19,15 +20,15 @@ header img{
 	font-family: Verdana;
 	left: 52px;
 	height: 30px;
-	top: -60%;
+	top: -50%;
 }
-.header-right{
+.header-right {
 	position: absolute;
 	top: -50%;
 	height: 30px;
 	right: 10px;
 }
-header li{
+header li {
 	position: relative;
 	text-align: right;
 	display: inline;
@@ -40,11 +41,14 @@ header a {
 	text-decoration: none;
 	color: #ccdbf0;
 }
-header a:hover{
-	color: yellow;
+header a:hover {
+	color: 	#a6b841;
 	margin: 0px 0px 0px 0px;
 }
 .content {
 	position: absolute;
 	margin-top: 25px;
+}
+p + ul {
+	margin-top: -20px;	
 }

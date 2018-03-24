@@ -1,9 +1,9 @@
 header {
-	position: fixed;
-	z-index: 1;
+	position:fixed;
 	height: 30px;
 	background-color: #4d5ccc;
 	width: 99%;
+	top: -1%;
 }
 .header-left {
 	position: absolute;
@@ -23,7 +23,7 @@ header img {
 }
 .header-right {
 	position: absolute;
-	top: -50%;
+	top: -45%;
 	height: 30px;
 	right: 10px;
 }
@@ -75,7 +75,7 @@ header a:hover {
 }
 .main-content a {
 	text-decoration: none;
-	color: #b9090b;
+	color: #e50914;
 }
 .main-content a:hover {
 	color: #55FF77;

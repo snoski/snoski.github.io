@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115795339-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115795339-1');
+		</script>
+		<title>March Madness Simulator</title>
+		<link type="text/css" rel="stylesheet" href="../../substyle.css" />
+	</head>
+    <body>
+		<object data="../../navbar.html" width="99%" height="30px" style="position: fixed; z-index:1; left:-2px">
+				Warning: navbar could not be loaded.
+		</object>
+		<div class="content">
+			<h3>Original Image</h3>
+			<img id="adidas" src="adidas.png" onload="drawOnCanvas();">
+			<canvas id="myCanvas" width="256" height="144">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
+			
+			<label for="file">Select png you would like to upload</label>
+			<input type="file" id="myPic" name="myPic" accept=".png" onchange="drawOnCanvas2();">
+			
+			<h3>Your Image</h3>
+			<canvas id="myCanvas2" width="356" height="238">Your browser does not support the HTML5 canvas tag.</canvas><br><br>
+			<button type="button" onclick="decode();">Decode</button>
+			<h3 id="hidHead"></h3>
+			<p id="hidPara"></p>
+		</div>
+		<script src="app.js"></script>
+    </body>
+</html>

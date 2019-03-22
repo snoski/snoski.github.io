@@ -1,0 +1,190 @@
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115795339-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115795339-1');
+		</script>
+		<title>Jeffrey Blake Carter</title>
+		<link type="text/css" rel="stylesheet" href="../../substyle.css" />
+	</head>
+	<body>
+		<object data="../../navbar.html" width="99%" height="30px" style="position: fixed; z-index:1; left:-2px">
+				Warning: navbar could not be loaded.
+		</object>
+		<div class="content">
+			<p>Back to <a href="MMHome.html">March Madness Simulation Results</a></p>
+			<h1>Methodology</h1>
+			<h2>Determining win probabilities</h2>
+			<p>
+					The first and arguably most important step in creating a meaningful simulation is to develop a reasonable method for calculating win probabilities. While there are many ways one may set about doing this, I decided on a fairly simple approach: <strong>the difference in the ranks of any two teams is likely to relate to the probability of each team winning.</strong>
+			</p>
+			<p>
+					While this at first seems overly simplistic, I believe that by the time of the post-season ranking systems incorporated a considerable amount of information learned from the large number of games each team plays in the regular season (including a large number of non-conference games). Thus, I believe most ranking systems actually incorporate much of the more obscure, granular information that other systems might use as variables in determining win probabilities.
+			</p>
+			<h3>What ranking systems should I incorporate into my own rankings?</h3>
+			<p>
+					The next step was determining exactly what rankings to use. I decided that the best method was creating a weighted average of several ranking systems. This will almost <em>certainly</em> be controversial, but it's just my subjective belief of which systems deserve more merit:
+			</p>
+			<p>
+					<table>
+							<tr>
+									<td><strong>Source</strong></td><td><strong>Weight</strong></td>
+							</tr>
+							<tr>
+									<td><a href="http://www.espn.com/mens-college-basketball/rankings/_/year/2018/poll/1">AP Poll</a></td><td>10%</td>
+							</tr>
+							<tr>
+									<td><a href="http://www.espn.com/mens-college-basketball/rankings/_/year/2018/poll/2">Coaches' Poll</a></td><td>20%</td>
+							</tr>
+							<tr>
+									<td><a href="http://www.espn.com/mens-college-basketball/rpi">RPI</a></td><td>5%</td>
+							</tr>
+							<tr>
+									<td><a href="http://www.espn.com/mens-college-basketball/bpi">ESPN BPI</a></td><td>20%</td>
+							</tr>
+							<tr>
+									<td><a href="https://kenpom.com">KenPom</a></td><td>25%</td>
+							</tr>
+							<tr>
+									<td><a href="http://www.espn.com/mens-college-basketball/rpi/_/sort/asm">ASM (Adjusted Scoring Margin) Rank</a>*</td><td>20%</td>
+							</tr><tr>
+									<td><em>*actually just a statistic, but I think it is quite powerful</em></td>
+							</tr>							
+					</table>
+			</p>
+			<p>
+					I assembled and ranked a list of 329 teams. Some of these ranking systems did not include each of those 329 teams. In those cases where a particular team was not ranked by every ranking system, I re-weighted it so that the existing rankings for that team displaced the weight of the missing rankings. This means a team that was ranked by only one source as #250 still ranked one better than another team ranked by all sources with a weighted average of #251. Almost every team was ranked by more than one source, and the highest-ranked (best) team ranked by only one source was #179. <strong><em>All tournament teams (including First Four) were ranked by at least 4 sources.</em></strong>
+			</p>
+			<h3>What function best defines the relationship of ranking differential to win probability?</h3>
+			<p>
+					Once I assembled my list of rankings, I had to determine a function that would best relate the difference in two teams' ranks with the probability of either team winning.  After some thought it became very clear that the most logical function to represent this relationship would be the logistic curve (or S-curve):
+			</p>
+			<p>
+					<img src="GenericWinProb.png" /><br /><em>Sorry for the strange reverse order of the x-axis, but I wanted the higher ranked teams to appear on the left and the worst teams on the right. It just made more sense in my mind that way.</em>
+			</p>
+			<p>
+					There are 4 reasons why this function makes sense. First, there is <strong>never</strong> a 100% probability that any team will win a given game no matter how unevenly matched it is. There is always <strong>something</strong> that might happen that allows the underdog to win. Thus, it makes sense for the probability to approach, but never reach, 100%. 
+			</p>
+			<p>
+					Second, it makes sense that a #300 team playing #1 has roughly the same probability as #250 playing #1, but there is a big difference in the probability of #52 vs. #1 and #2 vs. #1. This is despite the difference in the opponents' ranks in both situations being 50. Thus, we know the graph's slope should steepen as it approaches 0. We also know that the probability for a perfectly evenly-matched game (difference in ranks = 0) would obviously be 50% for both teams.
+			</p>
+			<p>
+					 All of the above describes the upper-left quadrant of the logistic curve shown above. If you think about a team that is worse than its opponent (its opponents rank minus its own rank is negative) everything would be exactly the opposite. Thus, it would form a reverse-mirror image on the right side of the chart.
+			</p>
+			<h3>How steep should the logistic curve be?</h3>
+			<p>
+					Now that we know which type of function should, in theory, most closely define the relationship between rank differential and win probability, we must now consider how steep the curve is. Below are two examples, one very shallow and one very steep:
+			</p>
+			<img src="shallow.png" /><img src="steep.png" />
+			<p>
+					If I did not find some method to determine the steepness of this graph, then these win probabilities would be completely arbitrary! So how did I determine this?
+			</p>
+			<p>
+					First, some housekeeping: please know that from now on, I will only be showing the upper-left-hand quadrant of the logistic curve as, for the sake of simplifying things, we will only be interested in the win probability of the higher-ranked (better) team:
+			</p>
+			<img src="upperleft.png" />
+			<p>
+					In order to determine the steepness of the curve, I knew that I would need to find some historical data. I wound up finding some data on <a href="https://en.wikipedia.org/wiki/NCAA_Division_I_Men%27s_Basketball_Tournament_upsets">Wikipedia</a> regarding the number of upsets in the first round from the NCAA tournament since it expanded to 65 teams in 1985 through 2017:
+			</p>
+			<p>
+					<table>
+							<tr align="center">
+									<td width="130"><strong>Type of Upset</strong></td>
+									<td width="100"><strong>Actual % of Times This Has Occurred</strong></td>
+							</tr>
+							<tr align="center">
+									<td width="130">16 seed over 1 seed</td><td width="100">0.0%</td>
+							</tr>
+							<tr align="center">
+									<td width="130">15 seed over 2 seed</td><td width="100">6.1%</td>
+							</tr>
+							<tr align="center">
+									<td width="130">14 seed over 3 seed</td><td width="100">15.9%</td>
+							</tr>
+							<tr align="center">
+									<td width="130">13 seed over 4 seed</td><td width="100">19.7%</td>
+							</tr>
+							<tr align="center">
+									<td width="130">12 seed over 5 seed</td><td width="100">35.6%</td>
+							</tr>
+							<tr align="center">
+									<td width="130">11 seed over 6 seed</td><td width="100">37.1%</td>
+							</tr>						
+					</table>
+			</p>
+			<p>
+					Then, since I did not have access to the starting ranks of each of these upsets from the years in which they occurred, I just looked at the average rank differential of these six &#34;upset classes&#34; from this year. For example, the average 16 seed in this year's tourney is ranked #170 (minus #1 gets to 169):
+			</p>
+			<p>
+					<table>
+							<tr align="center">
+									<td width="130"><strong>Type of Upset</strong></td>
+									<td width="100"><strong>Actual % of Times This Has Occurred</strong></td>
+									<td width="100"><strong>Avg Rank Diff This Year</strong></td>
+							</tr>
+							<tr align="center">
+									<td width="130">16 seed over 1 seed</td>
+									<td width="100">0.0%</td>
+									<td width="100">169</td>
+							</tr>
+							<tr align="center">
+									<td width="130">15 seed over 2 seed</td>
+									<td width="100">6.1%</td>
+									<td width="100">133</td>
+							</tr>
+							<tr align="center">
+									<td width="130">14 seed over 3 seed</td>
+									<td width="100">15.9%</td>
+									<td width="100">88</td>
+							</tr>
+							<tr align="center">
+									<td width="130">13 seed over 4 seed</td>
+									<td width="100">19.7%</td>
+									<td width="100">79</td>
+							</tr>
+							<tr align="center">
+									<td width="130">12 seed over 5 seed</td>
+									<td width="100">35.6%</td>
+									<td width="100">36</td>
+							</tr>
+							<tr align="center">
+									<td width="130">11 seed over 6 seed</td>
+									<td width="100">37.1%</td>
+									<td width="100">22</td>
+							</tr>						
+					</table>
+			</p>
+			<p>
+					I realize that this shortcut may not be the truest way to measure the data, and it is a small-ish sample size. (There have been only 132 opportunities for each of these classes to pull an upset since 1985.) That said, I feel it provides a reliable <strong><em>enough</em></strong> set of data for which to determine the steepness of the logistic curve, and when graphed, I'm very happy with the fit (Note that the points charted below are actually 1-upset rate):
+			</p>
+			<img src="FinalProbability.png" />
+			<p>
+					Looking at the chart, you may see one glaring data point that appears to be an outlier. That would be the fact that a 1-seed has never lost a first round game. My model says that it would be expected for a 1-seed to lose around 3.1% of the time or about once every 32 games. Yet a 1-seed has never lost in 132 games. It's hard to explain this. However, the most likely explanation is this year's average rank differential between 1 and 16 seeds is smaller than it has been, on average, in years past. In fact, even this year if both of the lower-ranked 16 seeds had won their First Four play-in game, it would have resulted in a data point much closer to my probability curve.
+			</p>
+			<p>
+					<strong>UPDATE: A 1 seed has now lost a first round game!!! Down goes Virginia! Down goes Virginia! Down goes Virginia!</strong> With this loss, it does slightly improve the fit of my model to the historical data:
+			</p>
+			<img src="FinalProbabilityWith16s.png" />
+			<h2>From Probabilities to Simulations</h2>
+			<p>
+					Now that we have a methodology for somewhat reliably determining probabilities, we now have to find a way to use that information to create a simulation. I started, like many others, with an empty bracket and 64 starting teams:
+			</p>
+			<img src="bracket.png" />
+			<p>
+					For each matchup, the program compares the favorite's win probability to a random number generated between 0 and 1. If the random number is less than the favorite's win probability, then the program assigns the favorite as the winner who will play in the Round of 32. If not, it assigns the underdog as the winner. It does this for every game in the First Round. Then, new probabilities are determined for all of the matchups in the Round of 32. The program then determines from those probabilities those teams who will play in the Sweet 16. It follows this same pattern for every game, every round, and every bracket until it has completed 100,000 full brackets and 100,000 National Champions have been crowned.
+			</p>
+			<p>
+					Finally, each time a team makes it to the next round, the program adds 1 to that round in that team's array representing the number of times it has made it to each round. Once the program completes, it transcribes all of the arrays into my spreadsheet so that I may analyze the numbers.
+			</p>
+			<p>
+					<h2><em>All told it takes about 2 hours for the program to complete!</em></h2>
+			</p>			
+			<p>Back to <a href="MMHome.html">March Madness Simulation Results</a></p>
+		</div>
+	</body>
+</html>

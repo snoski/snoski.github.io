@@ -1,0 +1,162 @@
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115795339-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115795339-1');
+		</script>
+		<title>March Madness Simulator</title>
+		<link type="text/css" rel="stylesheet" href="../../substyle.css" />
+	</head>
+	<body>
+		<object data="../../navbar.html" width="99%" height="30px" style="position: fixed; z-index:1; left:-2px">
+				Warning: navbar could not be loaded.
+		</object>
+		<div class="content">
+			<h3>March 14, 2018</h3>
+			<h1>March Madness 2018 Simulator</h1>
+			<p>
+					<img src="homebracket.png" /><br />
+					<span style="font-size:12px"><em>Example of one possible iteration produced by this simulator</em></span>
+			</p>
+			<p style="font-size:24px"><strong>Updated Simulations for Each New Round: </strong></p>
+					<ul>
+						<li style="font-size:24px"><a href="Roundof32/Roundof32.html"><strong>Round of 32</strong></a></li>
+						<li style="font-size:24px"><a href="SweetSixteen/sweetsixteen.html"><strong>Sweet Sixteen</strong></a></li>
+						<li style="font-size:24px"><a href="EliteEight/eliteeight.html"><strong>Elite Eight</strong></a></li>
+						<li style="font-size:24px"><strong>Final Four</strong></li>
+						<li style="font-size:24px"><strong>Championship Game</strong></li>
+					</ul>
+			<h4><a href="https://www.ncaa.com/news/basketball-men/bracket-beat/march-madness-dates-tournament-schedule">Schedule of Upcoming Games and TV channels</a></h4>
+			<p>
+					Every year in March, millions of basketball fans get amped for the thrill that is March Madness. Many will fill out brackets online hoping
+					 to hit pay dirt if they can achieve the ever elusive <em>perfect bracket</em>.
+			 </p>
+			<p>
+					Some websites allow many entries, but each entry takes quite a bit of time to fill out if one is trying to think thoughtfully about the real probabilities of all of the teams winning their respective games. For instance, ESPN's <a href="https://games.espn.com/tournament-challenge-bracket/2018/en/">Tournament Challenge</a> allows each user 25 brackets. At 63 games each, this means a user would have to determine the winner for 1,575 games!
+			</p>
+			<p>
+					This year, I decided to write a program that would automatically fill out my 25 brackets based on given win probabilities. I thought, while I'm at it, why not run it over 100,000 iterations and analyze the results? Below you can see what I discovered.
+			</p>
+			<p>
+					For those of you asking why in the world I would want to do this or wondering if 100,000 iterations is overkill: <a href="why.html">Why?</a>
+			</p>
+			<p>
+					For those of you that want to dig far deeper into exactly how I did all of this, you can read more about my methodology here: <a href="methodology.html">Methodology</a>
+			</p>
+			<p>
+					But for those of you who are already saying, &#34;Get on with it, and show me the results!&#34;, I will make you wait no longer:
+			<br />
+			</p>
+			<p><strong>Updates: 
+					<ul>
+						<li><a href="Roundof32/Roundof32.html">Round of 32</a></li>
+						<li><a href="SweetSixteen/sweetsixteen.html">Sweet Sixteen</a></li>
+						<li><strong><a href="EliteEight/eliteeight.html"><strong>Elite Eight</strong></a></strong></li>
+						<li><strong>Final Four</strong></li>
+						<li><strong>Championship Game</strong></li>
+					</ul>
+			</strong></p>
+			<table cellspacing="0" cellpadding="6" border="1" style="border-collapse:collapse">
+				<tr><th align="left" colspan="6" height="40" valign="bottom"><span style="font-size:20px; text-decoration:underline">Results</span> (click any of the links below to change the image to the corresponding result type)</th></tr>
+				<tr>
+						<td><strong>By Team:</strong></td> 
+						<td><a id="teamgames" href="javascript:;" onclick="imgChoose(this);">Games</a></td>
+						<td width="140"><a id="teampct" href="javascript:;" onclick="imgChoose(this);">% of Appearances in Each Round</a></td>
+						<td width="140"><a id="teamprob" href="javascript:;" onclick="imgChoose(this);">Probability of Winning Each Round</a></td>
+						<td width="140"><a id="teamentries" href="javascript:;" onclick="imgChoose(this);">% of Entries Remaining</a></td>
+						<td></td>
+				</tr>
+				<tr>
+						<td><strong>By Conference:</strong></td>
+						<td><a id="confgames" href="javascript:;" onclick="imgChoose(this);">Games</a></td>
+						<td width="140"><a id="confpct" href="javascript:;" onclick="imgChoose(this);">% of Appearances in Each Round</a></td>
+						<td width="140"><a id="confprob" href="javascript:;" onclick="imgChoose(this);">Probability of Winning Each Round</a></td>
+						<td width="140"><a id="conftourney" href="javascript:;" onclick="imgChoose(this);">% of Tourney Teams Still Remaining</a></td>
+						<td width="140"><a id="confall" href="javascript:;" onclick="imgChoose(this);">% of Conference Teams Remaining</a></td>
+				</tr>
+				<tr>
+						<td><strong>By Seed:</strong></td>
+						<td><a id="seedgames" href="javascript:;" onclick="imgChoose(this);">Games</a></td>
+						<td width="140"><a id="seedpct" href="javascript:;" onclick="imgChoose(this);">% of Appearances in Each Round</a></td>
+						<td width="140"><a id="seedprob" href="javascript:;" onclick="imgChoose(this);">Probability of Winning Each Round</a></td>
+						<td width="140"><a id="seedentries" href="javascript:;" onclick="imgChoose(this);">% of Entries Remaining</a></td>
+						<td></td>
+				</tr>
+			</table>			
+			<table width="750" cellpadding ="6">
+				<tr>
+					<td valign="top"><img id="ResultsPic" src="TeamGames.png"/></td>
+					<td valign="top">
+							<p id="commentary">
+									This statistic is the number of times each team appeared in each stage of the tournament. Each team starts with 100,000 entries, but through each round some percentage of these get eliminated based on that team's probability of winning against its opponents. The last column shows the number of times out of 100,000 possible opportunities that a particular team won the National Championship.
+							</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			function imgChoose(element) {
+				var id = element.id;
+				switch(id){
+					case "teamgames":
+						document.getElementById('ResultsPic').src='TeamGames.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the number of times each team appeared in each stage of the tournament. Each team starts with 100,000 entries, but through each round, some percentage of these get eliminated based on that team\'s probability of winning against its opponents. The last column shows the number of times out of 100,000 possible opportunities that a particular team won the National Championship.';
+						break;
+					case "teampct":
+						document.getElementById('ResultsPic').src='TeamPctAppear.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the percentage of all appearances in a given round that are represented by a given team. If it were shown, the First Round would show each team with 1.6% because each team represents 1/64th of all appearances in the First Round. However, as we progress through the rounds, the higher-ranked teams begin to represent a greater proportion of total appearances. <strong><em>I honestly don\'t find this measure to be all that meaningful.</strong></em>';
+						break;
+					case "teamprob":
+						document.getElementById('ResultsPic').src='TeamProbEachRound.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the average probability of each team to win that round\'s game <em>assuming it has already won the prior game(s)</em>. In other words, it is the probability of winning that game INDEPENDENT of any other game. In this chart, when comparing one team versus another, one can see how some teams may have an easier pathway to the championship than other teams. However, I think one of the most interesting observations is that <strong><em> you don\'t get very deep into the bracket before almost every team is facing relatively close matchups</strong></em>. This goes a long way towards explaining exactly why March Madness is so incredibly unpredictable!';
+						break;
+					case "teamentries":
+						document.getElementById('ResultsPic').src='TeamEntriesRemaining.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the probability <em>from the start of the tournament</em> that each team will reach each round of the tournament. The last column is also the probability that each team will win the championship. <strong><em>For this reason, this is my favorite summary of the team results</strong></em> and probably my favorite summary overall.';
+						break;
+					case "confgames":
+						document.getElementById('ResultsPic').src='ConfGames.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the number of times each conference\'s teams appeared in each stage of the tournament. Each conference starts with 100,000 * the number of teams it sent to The Dance. However, through each round, some percentage of these get eliminated based on all of the conference\'s teams\' individual probabilities of winning against their opponents. The last column shows the number of times out of 100,000 possible opportunities that a particular conference won the National Championship.';
+						break;
+					case "confpct":
+						document.getElementById('ResultsPic').src='ConfPctAppear.png';
+						document.getElementById('commentary').innerHTML = 'Like the same measure for teams, this statistic is the percentage of all appearances in a given round that are represented by a given conference. Unlike the same measure for teams, if the First Round were shown, each conference would NOT have equal representation because each conference did not send an equal number of teams. Still, as we progress through the rounds, the conferences with more higher-ranked teams begin to represent an even greater proportion of total appearances. <strong><em>I find this measure somewhat more meaningful than the same measure for teams, and <span style="text-decoration:underline">the last column DOES represent a conference\'s probability of one of its teams winning the Championship</span>. However, I find it somewhat misleading as a measure of conference strength because larger conferences will naturally still represent a larger percentage of appearances. Thus, I prefer other measures of conference strength like \"% of Conference Teams Remaining.\"</strong></em>';
+						break;
+					case "confprob":
+						document.getElementById('ResultsPic').src='ConfProbEachRound.png';
+						document.getElementById('commentary').innerHTML = 'Like the same measure for teams, this statistic is the average probability of teams in a conference to win that round\'s game <em>assuming they already won their prior game(s)</em>. In other words, it is the probability of winning that game INDEPENDENT of any other game. In this chart, when comparing one conference versus another, one can see how some conferences may have an easier pathway to the championship than other conferences.';
+						break;
+					case "conftourney":
+						document.getElementById('ResultsPic').src='ConfPctInitial.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the percentage of teams that a conference initially fielded that are expected to make it to each round. In some ways, this is a measure of conference strength because it shows the likelihood of the teams fielded to progress.  The last column can NOT be interpreted as the probability a certain conference will win the Championship. (For that statistic, please refer to the last column of \"% of Appearances\".)  Instead, the last column of this statistic is a description of the probability of <span style="text-decoration:underline"><strong>A RANDOMLY SELECTED team initially fielded by that conference</strong></span> to win the Championship. <strong><em>In the end, I still favor \"% of Conference Teams Remaining\" as a measure of conference strength because it is not distorted by teams that fielded only one team that happens to be amazing, and it also rewards conferences who sent a large percentage of their teams to the tourney.</strong></em> ';
+						break;
+					case "confall":
+						document.getElementById('ResultsPic').src='ConfEntriesRemaining.png';
+						document.getElementById('commentary').innerHTML = '<strong><em>My favorite measure for conference strength</strong></em>, this statistic shows the percentage of <span style="text-decoration:underline">total conference teams</span> that can be expected to make the next round (as opposed to just the percentage of teams that made the tournament). Similar to \"% of Tourney Teams Still Remaining,\" the last column of this statistic cannot be interpreted as the probability a certain conference will win the Championship. However, it IS the probability that A RANDOMLY SELECTED member of that conference will win the Championship.';
+						break;
+					case "seedgames":
+						document.getElementById('ResultsPic').src='SeedGames.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the number of times each seed\'s teams appeared in each stage of the tournament. Each seed starts with 100,000 * 4 teams. However, through each round, some percentage of these get eliminated based on all of the seed\'s teams\' individual probabilities of winning against their opponents. The last column shows the number of times out of 100,000 possible opportunities that a particular seed won the National Championship.';
+						break;
+					case "seedpct":
+						document.getElementById('ResultsPic').src='SeedPctAppear.png';
+						document.getElementById('commentary').innerHTML = 'Like the same measure for teams, this statistic is the percentage of all appearances in a given round that are represented by a given seed. You can see that each seed represents an equal proportion of the First Round. Then, as we progress through the rounds, the higher seeds represent a larger proportion of total appearances. <strong><em>Like the same measure for conferences, the last  column represents the probability of that seed winning the Championship. However, \"% of Entries Remaining\" may be a better visualization of a given seed\'s chance of progressing through to the next round.</strong></em>';
+						break;
+					case "seedprob":
+						document.getElementById('ResultsPic').src='SeedProbEachRound.png';
+						document.getElementById('commentary').innerHTML = 'Like the same measure for teams, this statistic is the average probability of teams in a seed to win that round\'s game <em>assuming they already won their prior game(s)</em>. In other words, it is the probability of winning that game INDEPENDENT of any other game. In this chart, when comparing one seed versus another, one can see how some seeds may have an easier pathway to the championship than other seeds.';
+						break;
+					case "seedentries":
+						document.getElementById('ResultsPic').src='SeedEntriesRemaining.png';
+						document.getElementById('commentary').innerHTML = 'This statistic is the percentage of teams that a seed initially fielded that are expected to make it to each round. This graph does shows the higher seeds better likelihood of advancing, but the last column can NOT be interpreted as a given seed\'s probability of winning the Championship. (Please refer to the last column of \"% of Appearances\" to find that statistic.) Instead, the last column of this statistic is a description of the probability of <span style="text-decoration:underline"><strong>A RANDOMLY SELECTED team in a seed</strong></span> to win the Championship.';
+						break;
+				}	
+			}
+		</script>
+	</body>
+</html>

@@ -5,3 +5,10 @@
 p + ul {
 	margin-top: -20px;	
 }
+
+#results-page td {
+	padding: 0px 30px 0px 30px;
+	margin: 10px;
+}
+#results-page tr:nth-child(even) {background: #EEEEEE}
+#results-page tr:nth-child(odd) {background: #FFFFFF}

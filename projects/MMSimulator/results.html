@@ -49,6 +49,27 @@
                                 <tr><td><a id="bracket25" href="javascript:;" onclick="imgChoose(this);">25</a></td><td style="background-color:#B7E6B6;">190</td><td style=";">0</td><td style=";">0</td><td style=";">0</td><td style=";">0</td><td style=";">0</td><td style="background-color:#B7E6B6;">190</td><td style="background-color:#4AC146;">1650</td><td style="background-color:#4AC146;">85.9%</td></tr></table>
                                 <p>Back to <a href="MMHome.html">March Madness Simulation Home</a></p>
                         </div>
+			<div id="bracketdiv">
+                                <p>Back to <a id="goback" href="javascript:;" onclick="imgChoose(this);">Bracket Results Table</a></p>                            
+                                <img id="bracketimg" src="1.png">
+                                <p>Back to <a id="goback2" href="javascript:;" onclick="imgChoose(this);">Bracket Results Table</a></p>
+                        </div>
                 </div>
+		<script>
+			function imgChoose(element) {
+				var id = element.id;
+				switch(id){
+					case "goback":
+						document.getElementById('restable').style.display ='show';
+						document.getElementById('bracketdiv').style.display ='none';
+						break;
+					case "bracket1":
+						document.getElementById('restable').style.display ='none';
+						document.getElementById('bracketimg').src = "1.png";
+						document.getElementById('bracketdiv').style.display ='show';
+						break;
+				}	
+			}
+		</script>
         </body>
 </html>

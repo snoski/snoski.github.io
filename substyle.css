@@ -13,8 +13,19 @@ p + ul {
 	margin-top: -20px;	
 }
 
+#results-page th div {
+	writing-mode: vertical-rl;
+	white-space: nowrap;
+	transform: rotate(180deg);
+	text-align: left;
+}
+#results-page th {
+	border: solid black 1px;
+	background-color: #4d5ccc;
+	color: #FFFFFF;
+}
 #results-page td {
-	padding: 0px 30px 0px 30px;
+	padding: 0px 15px 0px 15px;
 	margin: 10px;
 }
 #results-page tr:nth-child(even) {background: #EEEEEE}

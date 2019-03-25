@@ -17,7 +17,7 @@ p + ul {
 	writing-mode: vertical-rl;
 	white-space: nowrap;
 	transform: rotate(180deg);
-	text-align: left;
+	text-align: center;
 }
 #results-page th {
 	border: solid black 1px;

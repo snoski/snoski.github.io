@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+		    <title>View From 35,000 Feet</title>
+			<meta charset='UTF-8'>
+			<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+			<style>
+				html, body {
+					width: 100%;
+					height: 100%;
+				}
+				body {									
+					font-family: sans-serif;
+					font-size: 100%;
+				}
+				#buttondiv {
+					position: absolute;
+					width: 90%;
+					margin: auto;
+				}
+				#out, #in {
+					font-size: 1.6em;
+					font-weight: bold;
+					background-color: #009900;
+					color: white;
+					padding: 0px 3px 0px 3px;
+				}
+				#in {
+					position: absolute;
+					right: 0;
+				}
+				#out {
+					display: none;
+				}
+				#imgdiv {
+					position: relative;
+					margin: 5em 0px 0px 0px;
+				}
+				#main {
+					width: 95%;
+				}
+			</style>
+			<script>
+				function zoomIn() {
+					var imgSrc = $('#main').attr("src");
+					switch (imgSrc) {
+						case "1.png":
+							$('#main').attr("src","2.png");
+							$('#out').show();
+							break;
+						case "2.png":
+							$('#main').attr("src","3.png");
+							break;
+						case "3.png":
+							$('#main').attr("src","4.png");
+							break;
+						case "4.png":
+							$('#main').attr("src","5.png");
+							break;
+						case "5.png":
+							$('#main').attr("src","6.png");
+							break;
+						case "6.png":
+							$('#main').attr("src","7.png");
+							break;
+						case "7.png": 
+							$('#main').attr("src","8.png");
+							break;
+						case "8.png": 
+							$('#main').attr("src","9.png");
+							break;
+						case "9.png": 
+							$('#main').attr("src","10.png");
+							break;
+						case "10.png":
+							$('#main').attr("src","11.png");
+							break;
+						case "11.png":
+							$('#main').attr("src","12.png");
+							$('#in').hide();
+							break;
+					}
+				}
+				function zoomOut() {
+					var imgSrc = $('#main').attr("src");
+					switch (imgSrc) {
+						case "2.png":
+							$('#main').attr("src","1.png");
+							$('#out').hide();
+							break;
+						case "3.png":
+							$('#main').attr("src","2.png");
+							break;
+						case "4.png":
+							$('#main').attr("src","3.png");
+							break;
+						case "5.png":
+							$('#main').attr("src","4.png");
+							break;
+						case "6.png":
+							$('#main').attr("src","5.png");
+							break;
+						case "7.png":
+							$('#main').attr("src","6.png");
+							break;
+						case "8.png": 
+							$('#main').attr("src","7.png");
+							break;
+						case "9.png": 
+							$('#main').attr("src","8.png");
+							break;
+						case "10.png": 
+							$('#main').attr("src","9.png");
+							break;
+						case "11.png":
+							$('#main').attr("src","10.png");
+							break;
+						case "12.png":
+							$('#main').attr("src","11.png");
+							$('#in').show();
+							break;
+					}
+				}
+			</script>
+		</head>
+		<body>
+			<div id="linkdiv">
+				<a href="blog.html">&larr; Back to blog</a>
+			</div>
+			<div id="buttondiv">
+				<button id="out" onclick="zoomOut();">Zoom Out</button><button id="in" onclick="zoomIn();">Zoom In</button>
+			</div>
+			<div id="imgdiv">
+				<img id="main" src="1.png" />
+			</div>
+		</body>
+	</html>

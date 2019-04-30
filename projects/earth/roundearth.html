@@ -19,7 +19,7 @@
 				#buttondiv {
 					position: absolute;
 					width: 90%;
-					margin: auto;
+					margin: 2em auto;
 				}
 				#out, #in {
 					font-size: 1.6em;
@@ -37,7 +37,7 @@
 				}
 				#imgdiv {
 					position: relative;
-					margin: 5em 0px 0px 0px;
+					margin: 7em 0px 0px 0px;
 				}
 				#main {
 					width: 95%;
@@ -80,6 +80,12 @@
 							break;
 						case "11.png":
 							$('#main').attr("src","12.png");
+							break;
+						case "12.png":
+							$('#main').attr("src","highres.png");
+							break;
+						case "highres.png":
+							$('#main').attr("src","withoutblue.png");
 							$('#in').hide();
 							break;
 					}
@@ -120,6 +126,12 @@
 							break;
 						case "12.png":
 							$('#main').attr("src","11.png");
+							break;
+						case "highres.png":
+							$('#main').attr("src","12.png");
+							break;
+						case "withoutblue.png":
+							$('#main').attr("src","highres.png");
 							$('#in').show();
 							break;
 					}
@@ -128,7 +140,7 @@
 		</head>
 		<body>
 			<div id="linkdiv">
-				<a href="blog.html">&larr; Back to blog</a>
+				<a href="../../blog.html">&larr; Back to blog</a>
 			</div>
 			<div id="buttondiv">
 				<button id="out" onclick="zoomOut();">Zoom Out</button><button id="in" onclick="zoomIn();">Zoom In</button>

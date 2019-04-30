@@ -12,9 +12,8 @@ body {
 p + ul {
 	margin-top: -20px;	
 }
-article {
-	margin-top: 30px;
-	margin-bottom: 30px;
+h2 {
+	margin-top: 40px;
 }
 #results-page th div {
 	writing-mode: vertical-rl;

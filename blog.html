@@ -18,61 +18,149 @@
 		</object>
 		<div class="content">
 			<h1>Musings and Happenings</h1>
-			<h3>March 25, 2019 - March Madness - Sweet Sixteen Update</h3>
-			<p>
-				As many of you reading this are likely aware, last year I wrote a program that simulates March Madness.
-				I started this purely in an effort to make it easier for me to fill in my 25 ESPN Tournament Challenge
-				brackets in a reasonably intelligent manner. However, after building the script for 25 iterations, I
-				thought, "Why not simulate it over a much larger number of iterations and share my results?" So today,
-				I have posted my Sweet Sixteen results for 2019. Feel free to peruse the 
-				<a href="projects/MMSimulator/SweetSixteen/sweetsixteen.html">results</a> at your leisure, but I thought I would 
-				take a few minutes to share with you some interesting observations.
-			</p>
-			<p>
-				First things first, I must say I am pleased with my rankings this year. Whether it is pure luck or there 
-				was some level of skill involved, the top 15 of my rankings all made it to the Sweet Sixteen this year.
-				While admittedly, much of this is simply due to higher seeds performing very well, you can see below
-				that my rankings outperformed the NCAA's seedings with a 5-seed I ranked 14th sneaking in. Admittedly, 
-				both the NCAA and my model did not foresee Oregon making it this far. All in all, following a crazy year 
-				in which 16-seed UMBC beat 1-seed Virginia, the first time in NCAA tournament history a 1-seed lost 
-				in the first round, there have been FAR fewer surprises this year.
-			</p>
-			<img src="5seed.png">
-			<p>
-				Speaking of Oregon, because they made it to the Sweet Sixteen, Virginia has, by far, the easiest 
-				pathway to the Championship. Otherwise, we're dealing with virtual coin-flips for each game here on out.
-				Here are the probabilities for each team to proceed to the next level assuming they make it to a given 
-				level:
-			</p>
-			<img src="virgorg.png">
-			<p>
-				Regarding conferences, the Pac-12 was disastrous this year fielding only 3 teams (25% of its 12
-				teams) to the tourney. Before the First Round started, my model showed only a total 0.5% probability that ANY
-				ONE of the 3 Pac-12 teams would make it to the Championship game. To put that into perspective, the MAC
-				Conference, which fielded only 1 team (Buffalo) had a 4.2% chance to make it to the final game. (Luckily 
-				for Texas Tech, Buffalo's small probability was not realized.) 
-			</p>
-			<p>
-				Unlike the Pac-12, the ACC, which garnered massive hype heading into the Tournament has posted almost
-				unbelievably impressive results. It has certainly been enough to silence the doubters (like I admittedly 
-				was). The ACC fielded a very respectable 46.7% of its 15 teams to the First Round, but <em><strong>astonishingly</strong></em>
-				5 of the 7 ACC teams initially fielded (33.3% of the conference) are headed to the Sweet Sixteen. On the
-				other side of that same coin, the Big 12, which led the NCAA with 60% of its teams making it to the First
-				Round, has largely disappointed and now only has one hope to win it all, my alma mater, Texas Tech. #WreckEm
-				#4to1
-			</p>
-			<img src="ConfPerf.png">
-			<p>
-				Finally, the last observation I'll share is that I REALLY hope my bracket #s <a href="/projects/MMSimulator/14.png">14</a> and 
-				<a href="projects/MMSimulator/17.png">17</a> both picked the incorrect champion! ;-) With that, I'll leave you 
-				with some links if you'd like to explore the results of my simulation even further:<br>
-				<ul>
-					<li><a href="projects/MMSimulator/MMHome.html">Initial simulation heading into First Round</a></li>
-					<li><a href="projects/MMSimulator/SweetSixteen/sweetsixteen.html">Sweet Sixteen Update</a></li>
-					<li><a href="projects/MMSimulator/methodology.html">My Methodology</a></li>
-					<li><a href="projects/MMSimulator/why.html">Why do this at all?</a></li>
-				</ul>
-			</p>
+			<article>
+				<h3>April 30, 2019 - The "Flat" Earth from 35,000 Feet</h3>
+				<p>
+					Casual observers of the "Flat Earth movement" will likely have been puzzled as what once included only a handful of 
+					adherents seemingly swelled in size in recent years. For most of those not in the movement, it appears as though the 
+					whole thing must be some kind of satire until one digs into the material being presented in many places around 
+					the Web, most notably on YouTube. When one spends any time at all consuming this content, even if only out of 
+					morbid fascination, one realizes that the movement is not mostly a bunch of internet trolls maliciously purveying 
+					misinformation onto the public (though some trolls are certainly within its ranks). Instead, it actually
+					includes a large number who sincerely believe that the "globe earth" is a massive conspiracy. They point to
+					any number of pieces of evidence to support their theory including views from cruising altitude 
+					of airliners that appear to show a flat horizon. I set out to demonstrate why this specific claim does
+					not hold up under scrutiny.
+				</p>
+				<img src="/projects/earth/cockpit.png">
+				<p>
+					It should be noted that it is extremely difficult to find a clean unobstructed view of the horizon.
+					Almost all views of the horizon from 35,000 feet are going to contain cloud cover, which makes it difficult
+					to simply draw a straight line on the image, and when one does it generally either "proves" the observer's
+					confirmation bias or is easily discounted by the opposing side. For this reason, I am pursuing a different
+					approach: just how much curvature can we actually expect when viewing the Earth from 35,000 feet?
+				</p>
+				<p>
+					The first step to understanding this question is in realizing that while 35,000 feet (6.6 miles) feels
+					extremely high to mere humans, it is a miniscule distance above the Earth's surface when compared with the
+					Earth's radius, which <a href="https://www.space.com/17638-how-big-is-earth.html">ranges between 3,950 and 
+					3,963 miles</a>. Assuming, for the sake of simplicity, that the Earth is a sphere with average radius of
+					3,959 miles, this would mean that at cruising altitude, one is at an altitude of only 0.167% of the Earth's
+					radius. Based on these two numbers, we can actually calculate the distance to the horizon (among other things):
+				</p>
+				<img src="/projects/earth/roundearthdiagram.png">
+				<p>
+					In the image above, which is NOT to scale, the most interesting items to note are the following:
+					<ol>
+						<li>
+							The observer is 6.63 miles above the Earth's surface.
+						</li>
+						<li>
+							At this height, it is 229.1957 miles from the observer to the horizon.
+						</li>
+						<li>
+							That view is virtually the same distance as the 229.1783 mile curve from immediately below the
+							observer to the horizon.
+						</li>
+						<li>
+							That 229 mile curve makes only a 3.3&deg; angle with the center of the Earth. In other words, 
+							the view only extends only 0.92% of the circumference of the Earth.
+						</li>
+						<li>
+							Because the angle with the center of the Earth is so small, this means that the angle from the
+							observer to the horizon, at 86.7&deg;, is almost a right angle. And the chord, i.e. the straight
+							line that connects the point immediately below the observer with the horizon point, at 88.3&deg;,
+							is even closer to being a right angle. <em>This should be a major HINT for how much curvature we
+							can expect to see.</em>
+						</li>
+					</ol>
+					Armed with this knowledge, I decided to plot the observer's viewing circle <strong><em>to scale</em></strong> with
+					the Earth:
+				</p>
+				<img src="/projects/earth/1.png" style="width: 50%">
+				<p>
+					One can see that at 35,000 feet, the observer is seeing only a <strong><em>tiny</em></strong> fraction of the 
+					Earth's surface. In fact, it is only 0.084%, not even one-tenth of 1 percent. Taking this a step further, I also
+					plotted the observer's altitude of 6.6 miles on the top of that same picture above with the observer's view of the 
+					horizon	filled in blue. You probably didn't even notice it because the altitude is so tiny. However, I have also
+					created a <a href="/projects/earth/roundearth.html">tool that enables you to zoom in slowly</a>, which I believe
+					demonstrates just how little curvature one can expect to see from a plane cruising at 35,000 feet. Fully zoomed,
+					this is approximately the curvature that a human with a 
+					<a href="https://en.wikipedia.org/wiki/Field_of_view#Humans_and_animals">field of view of 114&deg;</a> could expect 
+					to see:
+				</p>
+				<img src="/projects/earth/highres.png">
+				<p>
+					It is important to keep in mind that the red line represents the farthest right the human eye can see when looking
+					forward. So to really get the correct impression, imagine looking straight at the center and zooming in even further 
+					until the red line is nearly out of sight on the right hand side. Now, I'll take the observer's sight-line away:
+				</p>
+				<img src="/projects/earth/withoutblue.png">
+				<p>
+					Finally, realize that the Earth actually curves a bit more gradually than the picture above and there are no pixels on
+					the real Earth to make the curve obvious. 
+				</p>
+				<h3>
+					As you can see, despite in fact being a globe, the Earth appears quite flat from 35,000 feet!
+				</h3>
+			</article>
+			<article>
+				<h3>March 25, 2019 - March Madness - Sweet Sixteen Update</h3>
+				<p>
+					As many of you reading this are likely aware, last year I wrote a program that simulates March Madness.
+					I started this purely in an effort to make it easier for me to fill in my 25 ESPN Tournament Challenge
+					brackets in a reasonably intelligent manner. However, after building the script for 25 iterations, I
+					thought, "Why not simulate it over a much larger number of iterations and share my results?" So today,
+					I have posted my Sweet Sixteen results for 2019. Feel free to peruse the 
+					<a href="projects/MMSimulator/SweetSixteen/sweetsixteen.html">results</a> at your leisure, but I thought I would 
+					take a few minutes to share with you some interesting observations.
+				</p>
+				<p>
+					First things first, I must say I am pleased with my rankings this year. Whether it is pure luck or there 
+					was some level of skill involved, the top 15 of my rankings all made it to the Sweet Sixteen this year.
+					While admittedly, much of this is simply due to higher seeds performing very well, you can see below
+					that my rankings outperformed the NCAA's seedings with a 5-seed I ranked 14th sneaking in. Admittedly, 
+					both the NCAA and my model did not foresee Oregon making it this far. All in all, following a crazy year 
+					in which 16-seed UMBC beat 1-seed Virginia, the first time in NCAA tournament history a 1-seed lost 
+					in the first round, there have been FAR fewer surprises this year.
+				</p>
+				<img src="5seed.png">
+				<p>
+					Speaking of Oregon, because they made it to the Sweet Sixteen, Virginia has, by far, the easiest 
+					pathway to the Championship. Otherwise, we're dealing with virtual coin-flips for each game here on out.
+					Here are the probabilities for each team to proceed to the next level assuming they make it to a given 
+					level:
+				</p>
+				<img src="virgorg.png">
+				<p>
+					Regarding conferences, the Pac-12 was disastrous this year fielding only 3 teams (25% of its 12
+					teams) to the tourney. Before the First Round started, my model showed only a total 0.5% probability that ANY
+					ONE of the 3 Pac-12 teams would make it to the Championship game. To put that into perspective, the MAC
+					Conference, which fielded only 1 team (Buffalo) had a 4.2% chance to make it to the final game. (Luckily 
+					for Texas Tech, Buffalo's small probability was not realized.) 
+				</p>
+				<p>
+					Unlike the Pac-12, the ACC, which garnered massive hype heading into the Tournament has posted almost
+					unbelievably impressive results. It has certainly been enough to silence the doubters (like I admittedly 
+					was). The ACC fielded a very respectable 46.7% of its 15 teams to the First Round, but <em><strong>astonishingly</strong></em>
+					5 of the 7 ACC teams initially fielded (33.3% of the conference) are headed to the Sweet Sixteen. On the
+					other side of that same coin, the Big 12, which led the NCAA with 60% of its teams making it to the First
+					Round, has largely disappointed and now only has one hope to win it all, my alma mater, Texas Tech. #WreckEm
+					#4to1
+				</p>
+				<img src="ConfPerf.png">
+				<p>
+					Finally, the last observation I'll share is that I REALLY hope my bracket #s <a href="/projects/MMSimulator/14.png">14</a> and 
+					<a href="projects/MMSimulator/17.png">17</a> both picked the incorrect champion! ;-) With that, I'll leave you 
+					with some links if you'd like to explore the results of my simulation even further:<br>
+					<ul>
+						<li><a href="projects/MMSimulator/MMHome.html">Initial simulation heading into First Round</a></li>
+						<li><a href="projects/MMSimulator/SweetSixteen/sweetsixteen.html">Sweet Sixteen Update</a></li>
+						<li><a href="projects/MMSimulator/methodology.html">My Methodology</a></li>
+						<li><a href="projects/MMSimulator/why.html">Why do this at all?</a></li>
+					</ul>
+				</p>
+			</article>
 		</div>
 	</body>
 </html>

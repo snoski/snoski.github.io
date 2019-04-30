@@ -12,7 +12,9 @@ body {
 p + ul {
 	margin-top: -20px;	
 }
-
+article {
+	margin-bottom: 30px;	
+}
 #results-page th div {
 	writing-mode: vertical-rl;
 	white-space: nowrap;

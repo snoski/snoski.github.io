@@ -16,6 +16,9 @@
 			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 			  crossorigin="anonymous"></script>
 			<style>
+				* {
+					margin: 0;
+				}
 				html, body {
 					width: 100%;
 					height: 100%;
@@ -23,6 +26,12 @@
 				body {									
 					font-family: sans-serif;
 					font-size: 100%;
+				}
+				#main-content {
+					min-height: 100%;
+					height: auto !important;
+					height: 100%;
+					margin: 10px auto -240px;
 				}
 				#buttondiv {
 					position: absolute;
@@ -48,7 +57,15 @@
 					margin: 7em 0px 0px 0px;
 				}
 				#main {
-					width: 95%;
+					width: 100%;
+				}
+				#secimgdiv {
+					position:fixed;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					margin: 0 auto;
+					width: 240px;
 				}
 			</style>
 			<script>

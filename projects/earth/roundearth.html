@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<!-- Global site tag (gtag.js) - Google Analytics -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115795339-1"></script>
-			<script>
-				window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-				gtag('config', 'UA-115795339-1');
-			</script>
 		    <title>View From 35,000 Feet</title>
 			<meta charset='UTF-8'>
 			<script
@@ -34,27 +26,58 @@
 					margin: 10px auto -240px;
 				}
 				#buttondiv {
-					position: absolute;
-					width: 90%;
+					width: 98%;
+					height: 1.7em;
 					margin: 2em auto;
 				}
-				#out, #in {
-					font-size: 1.6em;
+				#zoom, #obsvTogg, #fullOrHuman {
+					font-size: 1.25em;
 					font-weight: bold;
-					background-color: #009900;
 					color: white;
 					padding: 0px 3px 0px 3px;
+					margin: 0px 3px;
 				}
-				#in {
-					position: absolute;
-					right: 0;
+				#zoom {
+					background-color: #009900;
+				}				
+				#obsvTogg {
+					background-color: #222299;
+				}			
+				#fullOrHuman {
+					background-color: #CC3333;
 				}
-				#out {
+				#obsvTogg, #fullOrHuman {
 					display: none;
+				}
+				table {
+					margin: 0 auto;
+					border-collapse: collapse;
+					box-sizing: border-box;
+					width: 30%;
+				}
+				th {
+					text-align: right;
+					/*border: solid black 1px;*/
+				}
+				.mi {
+					text-align: center;
+					width: 10%;
+				}
+				#td1-1, #td2-1 {
+					text-align: right;
+					padding: 0px, 0px, 0px, 0px;
+					/*border: solid black 1px;*/
+					width: 35%;
+				}
+				#td1-2, #td2-2 {
+					text-align: left;
+					padding: 0px, 0px, 0px, 0px;
+					/*border: solid black 1px;*/
+					width: 5%;
 				}
 				#imgdiv {
 					position: relative;
-					margin: 7em 0px 0px 0px;
+					margin: 2em 0px 0px 0px;
 				}
 				#main {
 					width: 100%;
@@ -69,97 +92,160 @@
 				}
 			</style>
 			<script>
-				function zoomIn() {
-					var imgSrc = $('#main').attr("src");
-					switch (imgSrc) {
-						case "1.png":
-							$('#main').attr("src","2.png");
-							$('#out').show();
-							break;
-						case "2.png":
-							$('#main').attr("src","3.png");
-							break;
-						case "3.png":
-							$('#main').attr("src","4.png");
-							break;
-						case "4.png":
-							$('#main').attr("src","5.png");
-							break;
-						case "5.png":
-							$('#main').attr("src","6.png");
-							break;
-						case "6.png":
-							$('#main').attr("src","7.png");
-							break;
-						case "7.png": 
-							$('#main').attr("src","8.png");
-							break;
-						case "8.png": 
-							$('#main').attr("src","9.png");
-							break;
-						case "9.png": 
-							$('#main').attr("src","10.png");
-							break;
-						case "10.png":
-							$('#main').attr("src","11.png");
-							break;
-						case "11.png":
-							$('#main').attr("src","12.png");
-							break;
-						case "12.png":
-							$('#main').attr("src","highres.png");
-							break;
-						case "highres.png":
-							$('#main').attr("src","withoutblue.png");
-							$('#in').hide();
-							break;
-					}
+				var myArr = [
+					[20868,'.91',3908,'.34'],
+					[18166,'.56',3895,'.11'],
+					[15814,'.03',3878,'.83'],
+					[13766,'.03',3858,'.98'],
+					[11983,'.14',3834,'.98'],
+					[10431,'.05',3806,'.22'],
+					[9079,'.87',3772,'.09'],
+					[7903,'.60',3732,'.01'],
+					[6879,'.60',3685,'.44'],
+					[5988,'.16',3631,'.92'],
+					[5212,'.11',3571,'.12'],
+					[4536,'.52',3502,'.84'],
+					[3948,'.39',3427,'.06'],
+					[3436,'.39',3343,'.93'],
+					[2990,'.67',3253,'.80'],
+					[2602,'.65',3157,'.20'],
+					[2264,'.85',3054,'.79'],
+					[1970,'.78',2947,'.39'],
+					[1714,'.78',2835,'.92'],
+					[1491,'.92',2721,'.33'],
+					[1297,'.91',2604,'.63'],
+					[1129,'.02',2486,'.79'],
+					[981,'.98',2368,'.75'],
+					[853,'.98',2251,'.36'],
+					[742,'.55',2135,'.41'],
+					[645,'.55',2021,'.57'],
+					[561,'.10',1910,'.43'],
+					[487,'.58',1802,'.46'],
+					[423,'.58',1698,'.04'],
+					[367,'.87',1597,'.44'],
+					[319,'.36',1500,'.87'],
+					[277,'.14',1408,'.45'],
+					[240,'.38',1320,'.23'],
+					[208,'.38',1236,'.23'],
+					[180,'.52',1156,'.39'],
+					[156,'.27',1080,'.63'],
+					[135,'.16',1008,'.85'],
+					[116,'.78',940,'.90'],
+					[100,'.78',876,'.64'],
+					[86,'.85',815,'.90'],
+					[74,'.72',758,'.50'],
+					[64,'.17',704,'.27'],
+					[54,'.98',653,'.01'],
+					[46,'.98',604,'.53'],
+					[40,'.01',558,'.66'],
+					[33,'.95',515,'.18'],
+					[28,'.67',473,'.91'],
+					[24,'.08',434,'.66'],
+					[20,'.08',397,'.22'],
+					[16,'.60',361,'.37'],
+					[13,'.57',326,'.89'],
+					[10,'.93',293,'.52'],
+					[8,'.63',260,'.96'],
+					[6,'.63',228,'.81'],
+					[6,'.63',144,'.96']
+				];
+				function startZoom() {	
+					var oldText = $('#zoom').text();
+					$('#obsvTogg').hide();
+					$('#zoom').hide();
+					//console.log(oldText);
+					//console.log(oldText.indexOf('In'));
+					if (oldText.indexOf('In') != -1) {
+						var dir = 1;
+						var newText ='Zoom Out';
+						var stop = 56;
+					} else {						
+						$('#fullOrHuman').hide();
+						var dir = -1;
+						var newText = 'Zoom In';
+						var stop = 1;
+					}					
+					var startAnimation = setInterval(function(){ 	
+						var source = $('#main').attr('src');
+						if (source.substring(0,1) === 'w') {
+							var imgNum = Number(source.slice(2,source.indexOf('.')));
+							imgNum +=dir;
+							var mainImgSrc = 'wo'+(Number(imgNum))+'.png';
+						} else {
+							var imgNum = Number(source.slice(0,source.indexOf('.')));
+							imgNum +=dir;
+							var mainImgSrc = (Number(imgNum))+'.png';
+						}	
+						if (imgNum == stop) {
+							clearInterval(startAnimation);
+							$('#zoom').show();
+							$('#obsvTogg').show();
+							if (dir === 1) {
+								$('#fullOrHuman').text('Zoom in to Human Field of View');
+								$('#fullOrHuman').show();
+							}
+							return;
+						} else {
+							var secImgSrc = (Number(imgNum))+'circle.png';
+							$('#main').attr("src",mainImgSrc);
+							$('#second').attr("src",secImgSrc);	
+							$('#th1').text('Altitude');
+							$('#th2').text('Horizon');
+							$('.mi').text('miles');
+							console.log(imgNum);
+							$('#td1-1').text(myArr[imgNum-2][0]);							
+							$('#td1-2').text(myArr[imgNum-2][1]);							
+							$('#td2-1').text(myArr[imgNum-2][2]);							
+							$('#td2-2').text(myArr[imgNum-2][3]);
+						}
+					}, 100);
+					$('#zoom').text(newText); 
 				}
-				function zoomOut() {
-					var imgSrc = $('#main').attr("src");
-					switch (imgSrc) {
-						case "2.png":
-							$('#main').attr("src","1.png");
-							$('#out').hide();
-							break;
-						case "3.png":
-							$('#main').attr("src","2.png");
-							break;
-						case "4.png":
-							$('#main').attr("src","3.png");
-							break;
-						case "5.png":
-							$('#main').attr("src","4.png");
-							break;
-						case "6.png":
-							$('#main').attr("src","5.png");
-							break;
-						case "7.png":
-							$('#main').attr("src","6.png");
-							break;
-						case "8.png": 
-							$('#main').attr("src","7.png");
-							break;
-						case "9.png": 
-							$('#main').attr("src","8.png");
-							break;
-						case "10.png": 
-							$('#main').attr("src","9.png");
-							break;
-						case "11.png":
-							$('#main').attr("src","10.png");
-							break;
-						case "12.png":
-							$('#main').attr("src","11.png");
-							break;
-						case "highres.png":
-							$('#main').attr("src","12.png");
-							break;
-						case "withoutblue.png":
-							$('#main').attr("src","highres.png");
-							$('#in').show();
-							break;
-					}
+				function toggle() {											
+					var source = $('#main').attr('src');					
+					if (source.substring(0,1) === 'w') {
+						var imgNum = Number(source.slice(2,source.indexOf('.')));
+						var mainImgSrc = (Number(imgNum))+'.png';
+						var newText = 'Toggle Blue Observer Horizon Off';
+					} else {
+						var imgNum = Number(source.slice(0,source.indexOf('.')));
+						var mainImgSrc = 'wo'+(Number(imgNum))+'.png';
+						var newText = 'Toggle Blue Observer Horizon On';
+					}	
+					$('#main').attr("src",mainImgSrc);		
+					$('#obsvTogg').text(newText);
+				}
+				function fov() {							
+					var source = $('#main').attr('src');
+					if (source.substring(0,1) === 'w') {
+						var imgNum = Number(source.slice(2,source.indexOf('.')));
+						if (imgNum == 55) {
+							imgNum = 56;
+							var newText = 'Zoom out to 180\u00B0 view';
+						} else {
+							imgNum = 55;
+							var newText = 'Zoom in to Human Field of View';
+						}
+						var mainImgSrc = 'wo'+(Number(imgNum))+'.png';
+					} else {
+						var imgNum = Number(source.slice(0,source.indexOf('.')));
+						if (imgNum == 55) {
+							imgNum = 56;
+							var newText = 'Zoom out to 180\u00B0 view';
+						} else {
+							imgNum = 55;
+							var newText = 'Zoom in to Human Field of View';
+						}
+						var mainImgSrc = (Number(imgNum))+'.png';
+					}	
+					var secImgSrc = (Number(imgNum))+'circle.png';
+					$('#td1-1').text(myArr[imgNum-2][0]);							
+					$('#td1-2').text(myArr[imgNum-2][1]);							
+					$('#td2-1').text(myArr[imgNum-2][2]);							
+					$('#td2-2').text(myArr[imgNum-2][3]);
+					$('#main').attr("src",mainImgSrc);
+					$('#second').attr("src",secImgSrc);	
+					$('#fullOrHuman').text(newText);
 				}
 			</script>
 		</head>
@@ -169,11 +255,28 @@
 					<a href="../../blog.html">&larr; Back to blog</a>
 				</div>
 				<div id="buttondiv">
-					<button id="out" onclick="zoomOut();">Zoom Out</button><button id="in" onclick="zoomIn();">Zoom In</button>
+					<button id="zoom" onclick="startZoom();">Zoom In</button>
+					<button id="obsvTogg" onclick="toggle();">Toggle Blue Observer Horizon Off</button>
+					<button id="fullOrHuman" onclick="fov();"></button>
+				</div>
+				<div id="tablediv">
+					<table>
+						<thead>
+							<tr><th id="th1" colspan="3"></th><th id="th2" colspan="3"></th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id="td1-1"></td><td id="td1-2"></td><td class='mi'></td>
+								<td id="td2-1"></td><td id="td2-2"></td><td class='mi'></td>
+						</tbody>
+					</table>
 				</div>
 				<div id="imgdiv">
 					<img id="main" src="1.png" />
 				</div>
+			</div>
+			<div id="secimgdiv">
+				<img id="second" src="" />
 			</div>
 		</body>
 	</html>

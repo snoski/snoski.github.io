@@ -1,13 +1,11 @@
-function drawOnCanvas(){
-    console.log('yup, the code is being executed.');
-    var pic = document.getElementById("adidas");
-    var ctx = document.getElementById("myCanvas").getContext("2d");
+function drawOnCanvas(picElem,canvElem){
+    var ctx = canvElem.getContext("2d");
     var image = new Image();
     image.onload = function(){
         ctx.drawImage(image,0,0);
     }
-    image.src = pic.src;
-    pic.style.display = "none";
+    image.src = picElem.src;
+    picElem.style.display = "none";
 }
 
 function drawOnCanvas2(){
